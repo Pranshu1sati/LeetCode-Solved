@@ -38,3 +38,6 @@ Remove palindromic subsequence "baab" then "b".
 	<li><code>s[i]</code> is either <code>'a'</code> or <code>'b'</code>.</li>
 </ul>
 </div>
+<h3>Ans</h3>
+<div>
+<p>1st remove the longest pallindrome in just 1 step 2nd step is removing the remaining charecters</p></div>
