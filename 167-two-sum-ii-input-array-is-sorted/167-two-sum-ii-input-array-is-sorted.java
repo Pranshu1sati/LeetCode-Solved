@@ -13,6 +13,6 @@ class Solution {
         else
             p1++;
     }
-        return new int[] {- 1, -1};
+        return new int[] {};
     }
 }
