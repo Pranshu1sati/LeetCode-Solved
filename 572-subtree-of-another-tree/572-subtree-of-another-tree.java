@@ -28,8 +28,10 @@ class Solution {
             if(isIdentical(root,subRoot))
             return true ;
         }
-        boolean subtreeinLeft = isSubtree(root.left,subRoot);
-        boolean subtreeinRight = isSubtree(root.right,subRoot);
-        return (subtreeinLeft||subtreeinRight);
+        return isSubtree(root.left,subRoot)||isSubtree(root.right,subRoot);
+//         boolean subtreeinLeft = isSubtree(root.left,subRoot);
+//         boolean subtreeinRight = isSubtree(root.right,subRoot);
+    
+//         return (subtreeinLeft||subtreeinRight);
     }
 }
