@@ -22,16 +22,23 @@ class Solution {
         return true;
     }
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        //Main tree should always be bigger than sub tree
         if(root==null)return false;
+        //When you find a node that might be the start of the subtree check if the 
+       // trees are identical from that point on
         if(root.val==subRoot.val)
         {
             if(isIdentical(root,subRoot))
             return true ;
         }
-        return isSubtree(root.left,subRoot)||isSubtree(root.right,subRoot);
+        //Else just check if the subtree start from the left node of the current 
+       //  node or the right node of the current node
+              
 //         boolean subtreeinLeft = isSubtree(root.left,subRoot);
-//         boolean subtreeinRight = isSubtree(root.right,subRoot);
-    
+//         boolean subtreeinRight = isSubtree(root.right,subRoot);   
 //         return (subtreeinLeft||subtreeinRight);
+              
+        return isSubtree(root.left,subRoot)||isSubtree(root.right,subRoot);
+        
     }
 }
