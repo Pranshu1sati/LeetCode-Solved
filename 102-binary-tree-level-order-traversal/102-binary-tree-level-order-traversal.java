@@ -30,7 +30,7 @@ class Solution {
             TreeNode currNode = q.remove();
             if(!(currNode==null))
             al1.add(currNode.val);
-            if(currNode==null){
+            else{
                 al.add(al1);
                 al1=new ArrayList<>(); 
                 //IF ITS EMPTY IT MEANS THERES NOTHING MORE TO ADD TO THE QUEUE WE NEED TO BREAK OUT OF THE WHILE LOOP
@@ -40,7 +40,7 @@ class Solution {
                     q.add(null);
                 }
             }
-            else{
+            if(!al1.isEmpty()){
                 if(currNode.left!=null) q.add(currNode.left);
                 if(currNode.right!=null) q.add(currNode.right);
             }
