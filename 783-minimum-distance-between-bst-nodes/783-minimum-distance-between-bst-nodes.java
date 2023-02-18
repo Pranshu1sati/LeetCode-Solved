@@ -14,20 +14,22 @@
  * }
  */
 class Solution {
-    public void dfs(TreeNode root, List<Integer> l){
-    if(root==null) return;
-    dfs(root.left,l);
-    l.add(root.val);
-    dfs(root.right,l);
-}
-    public int minDiffInBST(TreeNode root) {
-        List<Integer> l = new ArrayList<Integer>();
-        dfs(root,l);
-        int mindiff= Integer.MAX_VALUE;
-        for(int i = 0 ; i<l.size()-1;i++){
-            int diff = Math.abs(l.get(i) - l.get(i+1));
-            mindiff = Math.min(mindiff,diff);
+     Integer prev;
+    int minDiff = Integer.MAX_VALUE;
+    
+    public void inOrderTraversal(TreeNode root) {
+        if (root == null) {
+            return;
         }
-        return mindiff;
+        inOrderTraversal(root.left);
+        if (prev != null) {
+            minDiff = Math.min(minDiff, Math.abs(root.val - prev));
+        }
+        prev = root.val;
+        inOrderTraversal(root.right);
+    }
+    public int minDiffInBST(TreeNode root) {
+        inOrderTraversal(root);
+        return minDiff;
     }
 }
