@@ -1,16 +1,17 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        int x= nums[nums.length-1];
-        int z=0;
-        
-        int []count= new int[x+1];
-        for(int i = 0 ; i< nums.length ; i++){
-         count[nums[i]]++;
-                    }
-        for(int i =0 ;i<count.length;i++){
-            if(count[i]==1)
-                z=i;
-        }
-        return z;
-        }
+        int n = nums.length;
+        int lo = 0, hi = n-1;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if ((mid % 2 == 0 && mid + 1 < n  && nums[mid] == nums[mid + 1]) ||
+                (mid % 2 == 1 && mid - 1 >= 0 && nums[mid] == nums[mid - 1]))
+                lo = mid + 1;
+            else
+                hi = mid;
+          
+          if(mid-1 >= 0 && mid+1 <n && nums[mid] != nums[mid + 1] && nums[mid] != nums[mid - 1]) return nums[mid];
+         }
+        return nums[lo];
+    }
 }
