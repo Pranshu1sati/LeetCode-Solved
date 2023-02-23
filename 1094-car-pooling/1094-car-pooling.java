@@ -13,12 +13,12 @@ class Solution {
         for (int i = 0; i < trips.length; ++i) {
         l.add(new int[] {trips[i][1], 1, trips[i][0]});
         l.add(new int[] {trips[i][2], 0, trips[i][0]});
-         }
-        Collections.sort(l, (a, b) -> a[0] - b[0]);
+    }
+    Collections.sort(l, (a, b) -> a[0] - b[0]);
          int curr = 0;
     for (int i = 0; i < l.size(); i++) {
         if (l.get(i)[1] == 1) curr += l.get(i)[2]; 
-         else curr-=l.get(i)[2];
+         if(l.get(i)[1]==0) curr-=l.get(i)[2];
         if (curr > capacity) return false;
     }
     return true;
