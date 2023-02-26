@@ -4,15 +4,16 @@ class Solution {
         for(int n : nums){
             map.put(n,map.getOrDefault(n,0)+1);
         }
-        Queue<Integer> heap = new PriorityQueue<>(
-            (n1, n2) -> map.get(n1) - map.get(n2));
-         for (int n: map.keySet()) {
-          heap.add(n);
-          if (heap.size() > k) heap.poll();} 
-        int[] top = new int[k];
-        for(int i = k - 1; i >= 0; --i) {
-            top[i] = heap.poll();
+        
+        PriorityQueue<Integer> pq=new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
+        for(int key : map.keySet()){
+            pq.add(key);
+            if(pq.size()>k) pq.poll();
         }
-        return top;
+        int[] result = new int[k];
+        for(int i = k - 1; i >= 0; i--) {
+            result[i] = pq.poll();
         }
+        return result;
     }
+}
