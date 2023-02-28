@@ -1,27 +1,26 @@
 class Solution {
     public int leastInterval(char[] tasks, int n) {
-        HashMap<Character,Integer> mp = new HashMap<>();
-        for(char c : tasks){
-            mp.put(c, mp.getOrDefault(c, 0) + 1);
-        }
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(((a,b)->b-a));
-        maxHeap.addAll(mp.values());
-        int cycles =0;
-        while(!maxHeap.isEmpty())
-        {
-            List<Integer> temp = new ArrayList<>();
-            for(int i =0;i<n+1;i++){
-                if(!maxHeap.isEmpty())
-                    temp.add(maxHeap.remove());
+        if (n == 0) return tasks.length;
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+        Queue<Pair<Integer, Integer>> q = new LinkedList<>();
+        int[] arr = new int[26];
+        for (char c : tasks) arr[c - 'A']++;
+        for (int val : arr) if (val > 0) pq.add(val);
+        int time = 0;
+
+        while ((!pq.isEmpty() || !q.isEmpty())) {
+            time++;
+            if (!pq.isEmpty()) {
+                int val = pq.poll();
+                val--;
+                if (val > 0) q.add(new Pair(val, time + n));
             }
-        
-        for(int i:temp){
-            if(--i>0)
-                maxHeap.add(i);
+
+            if (!q.isEmpty() && q.peek().getValue() == time) pq.add(
+                q.poll().getKey()
+            );
         }
-        cycles+=maxHeap.isEmpty()?temp.size():n+1;
-            }
-        return cycles;
+        return time;
     }
     
 }
