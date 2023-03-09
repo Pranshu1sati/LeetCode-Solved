@@ -9,12 +9,9 @@
  *     }
  * }
  */
-
-public class Solution
-{
-    public ListNode detectCycle(ListNode head)
-    {
-        ListNode r=head;
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+         ListNode r=head;
         ListNode t=head;
         ListNode start;
         ListNode meet;
@@ -36,6 +33,5 @@ public class Solution
             
         }
         return null;
-       
-}
+    }
 }
