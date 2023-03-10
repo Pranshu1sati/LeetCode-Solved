@@ -7,8 +7,8 @@ class Solution {
                 mp.put(n,1);
         }
         int x=0;
-         Set<Integer> keys = mp.keySet();
-            for(Integer key : keys){
+         //Set<Integer> keys = mp.keySet();
+            for(Integer key : mp.keySet()){
                 if(mp.get(key)> nums.length/2) x=key;
             }
      return x;
