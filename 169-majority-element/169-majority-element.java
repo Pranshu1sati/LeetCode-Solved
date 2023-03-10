@@ -2,9 +2,8 @@ class Solution {
     public int majorityElement(int[] nums) {
         HashMap<Integer, Integer> mp = new HashMap<>();
         for(int n: nums){
-            if(mp.containsKey(n)) mp.put(n,mp.get(n)+1);
-            else
-                mp.put(n,1);
+            
+                mp.put(n,mp.getOrDefault(n,0)+1);
         }
         int x=0;
          //Set<Integer> keys = mp.keySet();
