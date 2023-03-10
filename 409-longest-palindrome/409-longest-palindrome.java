@@ -1,15 +1,22 @@
 class Solution {
-    public int longestPalindrome(String s) {
-        Set<Character> set = new HashSet<>();
-        int len = 0;
-        for (char c : s.toCharArray()) {
-            if (set.contains(c)) {
-                len += 2;
-                set.remove(c);
-            }
-            else set.add(c);
+     public int longestPalindrome(String s) {
+        char[] str = s.toCharArray();
+        int len = str.length,count=0;
+        if(len == 1)
+        return 1;
+        int[] arr = new int[58];
+        for(int i = 0;i < len;i++){
+            arr[str[i] - 'A']++;
         }
-
-        return set.size() > 0 ? len + 1 : len;
+        for(int i = 0;i<58;i++){
+            if(arr[i]%2 == 0)
+            count += arr[i];
+            else if(arr[i]>1)
+            count += arr[i]-1;
+        }
+        if(len == count)
+        return count;
+        count++;
+        return count;
     }
 }
