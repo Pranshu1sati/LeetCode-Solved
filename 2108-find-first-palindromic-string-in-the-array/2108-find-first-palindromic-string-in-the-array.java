@@ -1,26 +1,28 @@
-
 class Solution {
-    public boolean isPal( String word ){
-       
-        if( word.length()==0 || word.length()==1 ){
-            return true;
-        }
-        else if(word.charAt(0) == word.charAt(word.length()-1))
-        {
-            return isPal(word.substring(1,word.length()-1));
-        }
-        return false;
-    }
-
-    
     public String firstPalindrome(String[] words) {
-        String result = "";
-        for(int i =0; i< words.length; i++){
-            if(isPal(words[i]) ){
-                result = words[i];
-                return result;
+        String ans ="";
+        for(String w : words)
+        {   if(w.length()<=1) return w;
+            int r = 0, l = w.length() - 1;
+            boolean flag = false;
+            while(r<l)
+            {
+                if(w.charAt(l)==w.charAt(r))
+                {  r++;
+                    l--;
+                 flag =true;
+                }
+                
+                else {
+                    flag=false;
+                break;
+                }
             }
-        }
-        return result;
+            if (r >= l && flag == true) 
+            {
+            return ans=w;
+            }
     }
+    return ans;
+    }    
 }
