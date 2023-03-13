@@ -1,22 +1,20 @@
 class Solution {
     public String[] sortPeople(String[] names, int[] heights) {
-        TreeMap<Integer,String>t=new TreeMap<>();
-        ArrayList<String> l = new ArrayList<>();
-        for(int i=0;i<names.length;i++)
-        {
-            t.put(heights[i],names[i]);
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for(int h : heights){
+            pq.offer(h);
         }
-        for(String x:t.values())
-        {
-            l.add(x);
+         String[] res = new String[names.length];
+        for(int j =0; j< res.length;j++){
+            int h = pq.poll();
+           for (int k = 0; k < heights.length; k++) {
+                if (heights[k] == h) {
+                    res[j] = names[k];
+                    heights[k] = -1; // mark as visited
+                    break;
+                }
+           }
         }
-        Collections.reverse(l);
-        System.out.println(l);
-        String arr[]=new String[l.size()];
-        for(int i=0;i<l.size();i++)
-        {
-           arr[i]=l.get(i);
-        }
-        return arr;
+        return res;
     }
 }
