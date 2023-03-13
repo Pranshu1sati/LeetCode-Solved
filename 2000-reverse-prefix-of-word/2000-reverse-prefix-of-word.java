@@ -1,5 +1,6 @@
 class Solution {
     public String reversePrefix(String word, char ch) {
+        if (!word.contains(String.valueOf(ch))) return word;
     StringBuilder sb1 = new StringBuilder();
     boolean flag = false;
     int  i = 0;
