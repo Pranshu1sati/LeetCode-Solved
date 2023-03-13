@@ -1,24 +1,31 @@
 class Solution {
-    
-     public boolean isVovel(char ch){
-        if(ch=='a' ||ch=='e' ||ch=='i' ||ch=='o' ||ch=='u'
-            ||ch=='A'||ch=='E' || ch=='I' || ch=='O' || ch=='U'){
-                return true;
-            }
-            return false;
-    }
     public boolean halvesAreAlike(String s) {
-        int n = s.length();
-        int i=0;
-        int j=n-1;
-        int countA=0, countB=0;
-        while(i<j)
-        {
-            if(isVovel(s.charAt(i))) {countA++;}
-            if(isVovel(s.charAt(j))) {countB++;}
-               i++;
-               j--;
-        }
-              return countA==countB;
+        //1st half
+        //2nd half
+        //if second half = 1st half
+         int h1 = 0;
+        int h2 = s.length() / 2;
+        int vca = 0;
+        int vcb = 0;
+        for(int i = 0 ; i < s.length() ; i++) {         
+            if(h2 >= s.length()) {
+                break;
+            }
+           
+            if(s.charAt(h1)=='a'||s.charAt(h1)=='e'||s.charAt(h1)=='i'||s.charAt(h1)=='o'||s.charAt(h1)=='u') {
+                vca++;
+            }
+            if(s.charAt(h2)=='a'||s.charAt(h2)=='e'||s.charAt(h2)=='i'||s.charAt(h2)=='o'||s.charAt(h2)=='u') {
+                vcb++;
+            }   if(s.charAt(h1)=='A'||s.charAt(h1)=='E'||s.charAt(h1)=='I'||s.charAt(h1)=='O'||s.charAt(h1)=='U') {
+                vca++;
+            }
+            if(s.charAt(h2)=='A'||s.charAt(h2)=='E'||s.charAt(h2)=='I'||s.charAt(h2)=='O'||s.charAt(h2)=='U')             {
+                vcb++; 
+            }   
+            h1++;
+            h2++;
+        } 
+        return vca == vcb;
     }
-}
+    }
