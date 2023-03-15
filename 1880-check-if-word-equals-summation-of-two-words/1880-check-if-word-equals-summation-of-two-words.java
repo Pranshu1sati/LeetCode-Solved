@@ -7,10 +7,10 @@ class Solution {
     }
     
     private int getNumericalValue(String word) {
-        StringBuilder sb = new StringBuilder();
-        for (char c : word.toCharArray()) {
-            sb.append((int)(c - 'a'));
-        }
-        return Integer.parseInt(sb.toString());
+        int value = 0;
+    for (char c : word.toCharArray()) {
+        value = value * 10 + (c - 'a');
+    }
+    return value;
     }
 }
