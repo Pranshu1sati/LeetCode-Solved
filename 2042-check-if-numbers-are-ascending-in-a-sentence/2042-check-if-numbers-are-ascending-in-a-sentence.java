@@ -1,18 +1,20 @@
 class Solution {
    
         public boolean areNumbersAscending(String s) {
-        int prev = 0;
-        
-        for(String token: s.split(" ")) {
-            try {
-                int number = Integer.parseInt(token);
-                if(number <= prev)
-                    return false;
-                prev = number;
-            }
-            catch(Exception e) {}
+        int previous = 0;
+    
+    for(String str: s.split(" "))
+    {
+        if(Character.isDigit(str.charAt(0)))
+        {
+            int number = Integer.parseInt(str);
+            
+            if(number <=previous)
+                return false;
+            
+            previous = number;
         }
-        
-        return true; 
+    }
+    return true;
     }
 }
