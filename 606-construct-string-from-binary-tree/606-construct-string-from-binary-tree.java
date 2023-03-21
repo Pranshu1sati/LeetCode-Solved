@@ -15,23 +15,23 @@
  */
 class Solution {
     static String str = "";
-        public static void help(TreeNode root){
+        public static void tree2str4real(TreeNode root){
         if(root==null) return;
         str+=root.val;
         if(root.left != null || root.right!=null){
             str+='(';
-            help(root.left);
+            tree2str4real(root.left);
             str+=')';
         }
         if(root.right!=null){
             str+='(';
-            help(root.right);
+            tree2str4real(root.right);
             str+=')';
         }
         }
    public String tree2str(TreeNode root) {
         str="";
-        help(root);
+        tree2str4real(root);
         return str;
     }
 }
