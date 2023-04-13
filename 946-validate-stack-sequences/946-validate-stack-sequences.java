@@ -4,11 +4,12 @@ class Solution {
         int j = 0;
         for(int p : pushed) {
             st.push(p);
-            while(!st.isEmpty() && j < popped.length && st.peek() == popped[j]) {
+           while(!st.isEmpty() && j < popped.length && st.peek() == popped[j]) {
                 st.pop();
                 j++;
             }
         }
+        
         return st.isEmpty();
     }
 }
