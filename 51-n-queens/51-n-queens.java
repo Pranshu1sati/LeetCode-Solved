@@ -42,7 +42,7 @@ class Solution {
         }
     private List<String> constructBoard(char[][] board) {
             List<String> result = new ArrayList<>();
-            for (int i = 0; i < board.length; i++)
+            for (int i = 0; i < board[0].length; i++)
                 result.add(new String(board[i]));
 
             return result;
