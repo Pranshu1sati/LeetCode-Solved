@@ -1,8 +1,5 @@
 class Solution {
     public int numOfSubarrays(int[] nums, int k, int t) {
-        
-        int l = 0 ; 
-        int r = k-1;
         int sum = 0;
         int count = 0 ;
         for(int i = 0 ; i< k ; i++){
