@@ -12,7 +12,7 @@ class Solution {
             return;
         }
 
-        if(t<0) return ;
+        if(i==n) return ;
         //pick
         if(c[i]<=t)
         {al.add(c[i]);
