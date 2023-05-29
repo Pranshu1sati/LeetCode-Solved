@@ -20,7 +20,7 @@ class Solution {
         q.add(root);
         mp.put(root,0);
         int currWidth = 0;
-        int MaxWidth = 0;
+        int MaxWidth = Integer.MIN_VALUE;
         while(!q.isEmpty()){
             int size = q.size();
             int start = 0,end = 0; 
