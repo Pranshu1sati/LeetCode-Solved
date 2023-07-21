@@ -1,9 +1,12 @@
 class Solution {
     public int fib(int n) {
-         int m =1;
-        double Phi= ( m + Math.sqrt(5))/ 2;
-        double phi = ( m - Math.sqrt(5))/ 2;
-        double ans = (Math.pow(Phi, n)-Math.pow(phi, n))/Math.sqrt(5);
-        return ((int)ans);
+        if (n == 0) return 0;
+        int dp[] = new int [n+1];
+        dp[0] = 0;
+        dp[1] = 1;
+        for(int i =2; i<dp.length; i++){
+            dp[i]= dp[i-1]+dp[i-2];
+        }
+        return dp[n];
     }
 }
