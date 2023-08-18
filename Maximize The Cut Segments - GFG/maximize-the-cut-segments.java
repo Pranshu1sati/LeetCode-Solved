@@ -45,9 +45,26 @@ class Driver
 class Solution
 {
     //Function to find the maximum number of cuts.
-    public int maximizeCuts(int n, int x, int y, int z)
-    {
-       //Your code here
+public int maxcurRec(int n, int x, int y, int z, ArrayList<Integer> dp) {
+    if (n == 0) return 0;
+    if (n < 0) return -1;
+    if (dp.get(n) != -1) return dp.get(n);
+    
+    int res = Math.max(
+        maxcurRec(n - x, x, y, z, dp),
+        Math.max(
+            maxcurRec(n - y, x, y, z, dp),
+            maxcurRec(n - z, x, y, z, dp)
+        )
+    );
+    dp.set(n, (res == -1) ? -1 : res + 1);
+    return dp.get(n);
+}
+
+public int maximizeCuts(int n, int x, int y, int z) {
+    // ArrayList<Integer> dp = new ArrayList<>(Collections.nCopies(n + 1, -1)); // Size should be n + 1
+    // return maxcurRec(n, x, y, z, dp);
+       
         int[] dp = new int[n + 1];
         Arrays.fill(dp, -1);
         dp[0] = 0;
