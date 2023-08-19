@@ -36,7 +36,7 @@ class Solution{
 		if(length == 0 || i == length)
 			return 0;
 		if(length < 0)
-			return Integer.MIN_VALUE;
+			return 0;
 		if(memo[length]!=0 ) return memo[length];
 		int take = value[i] + findMax(value, length - i - 1, i, memo);
 		int dontTake = findMax(value, length, i + 1, memo);
@@ -49,6 +49,6 @@ class Solution{
         //code 
         int memo[] = new int[n+1];
         
-       return findMax(prices, n,0,memo );
+       return findMax(prices, n,0,memo);
     }
 }
