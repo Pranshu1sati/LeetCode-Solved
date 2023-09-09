@@ -1,34 +1,17 @@
 class Solution {
-        private int n;
-    private int[][] t;
-
-    public int solve(int[] nums, int l, int r) {
-        if (l > r)
-            return 0;
-
-        if (l == r)
-            return nums[l];
-
-        if (t[l][r] != -1)
-            return t[l][r];
-
-        int takeLeft = nums[l] + Math.min(solve(nums, l + 2, r), solve(nums, l + 1, r - 1));
-        int takeRight = nums[r] + Math.min(solve(nums, l, r - 2), solve(nums, l + 1, r - 1));
-
-        return t[l][r] = Math.max(takeLeft, takeRight);
-    }
+    public int predict4real(int i , int j , int  nums[] ){
+        if(i>j) return 0;
+        if(i==j) return nums[i];
+        int takel = nums[i] + Math.min(predict4real(i+2, j , nums),predict4real(i+1, j-1 , nums));
+        int taker = nums[j] + Math.min(predict4real(i, j-2 , nums),predict4real(i+1, j-1 , nums));
+        return Math.max(takel,taker);
+    } 
     public boolean predictTheWinner(int[] nums) {
-        n = nums.length;
-        t = new int[n][n];
-
-        for (int[] row : t) {
-            Arrays.fill(row, -1);
-        }
-
+        int i =0; 
+        int j = nums.length-1;
         int total = Arrays.stream(nums).sum();
-        int player1 = solve(nums, 0, n - 1);
-        int player2 = total - player1;
-
-        return player1 >= player2;
+        int p1 = predict4real(0,j,nums);
+        int p2 = total-p1;
+        return p1>=p2;
     }
 }
