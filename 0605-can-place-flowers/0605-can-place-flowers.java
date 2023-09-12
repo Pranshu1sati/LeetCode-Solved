@@ -20,7 +20,7 @@ class Solution {
                 flowerbed[i] = 1;
             }}
             if(i>0 && flowerbed[i]==0 && flowerbed[i-1] !=1 && flowerbed[i+1] !=1  ){
-                System.out.println(i +  "after check");
+                // System.out.println(i +  "after check");
                 n--;
                 
                 flowerbed[i] =1;
