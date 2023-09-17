@@ -15,7 +15,7 @@ class Solution
     static int numTrees(int n)
     {
         // Your code goes here
-       long dp[] = new long[n+1];
+        long dp[] = new long[n+1];
         dp[0] =1;
         dp[1] =1; 
         for (int i = 2; i <= n; i++) {
@@ -25,6 +25,7 @@ class Solution
     }
 
         return(int)dp[n]% 1000000007;
+        
     }
 }
 
